@@ -4,18 +4,12 @@
 #include <stdio.h>
 #include <string.h>
 using namespace std;
-unsigned char mem[200] = {0};
-unsigned char* ptr = &mem[100];
+unsigned char mem[1000] = {0};
+unsigned char* ptr = &mem[500];
 void interpert();
 void runFile(char*);
 char* run(char* tape);
-void inc();
-void dec();
-void left();
-void right();
-void print();
 char* block(char*);
-bool debug = false;
 void stradd(char* tape, int* len, char chr) {
 	tape[*len] = chr;
 	(*len) ++;
@@ -76,19 +70,22 @@ char* run(char* tape) {
 	while ((*tapePtr) != '\0') {
 		switch((*tapePtr)) {
 			case '+':
-				inc();
+				(*ptr)++;
 				break;
 			case '-':
-				dec();
+				(*ptr)--;
 				break;
 			case '<':
-				left();
+				ptr --;
 				break;
 			case '>':
-				right();
+				ptr ++;
 				break;
 			case '.':
-				print();
+				cerr << (char)(*ptr);
+				break;
+			case ',':
+				read(STDIN_FILENO, ptr, 1);
 				break;
 			case '[':
 				tapePtr = block(tapePtr);
@@ -133,19 +130,4 @@ char* block(char* tapePtr) {
 		}
 	}
 	return end;
-}
-void print() {
-	cerr << (char)(*ptr);
-}
-void inc() {
-	(*ptr)++;
-}
-void dec() {
-	(*ptr)--;
-}
-void left() {
-	ptr --;
-}
-void right() {
-	ptr ++;
 }
