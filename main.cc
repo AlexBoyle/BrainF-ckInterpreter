@@ -1,5 +1,3 @@
-//+[-[<<[+[--->]-[<<<]]]>>>-]>-.---.>..>.<<<<-.<+.>>>>>.>.<<.<-.
-//++++++++++[>+>+++>+++++++>++++++++++<<<<-]>>>++.>+.+++++++..+++.<<++.>+++++++++++++++.>.+++.------.--------.<<+.<.
 #include <iostream>
 #include <unistd.h>
 #include <stdlib.h>
@@ -106,7 +104,6 @@ char* run(char* tape) {
 char* findEnd(char* tape) {
 	char* tapePtr = tape;
 	int count = 1;
-	tapePtr ++;
 	while ((*tapePtr) != '\0') {
 		if((*tapePtr) == '[') {
 			count ++;
@@ -117,7 +114,6 @@ char* findEnd(char* tape) {
 				return tapePtr;
 			}
 		}
-			
 		tapePtr ++;
 	}
 }
