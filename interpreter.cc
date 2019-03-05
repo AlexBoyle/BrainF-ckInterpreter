@@ -4,7 +4,7 @@
 #include "Interpreter.h"
 
 Interpreter::Interpreter() {
-	this->ptr = &mem[500];
+	this->ptr = &mem[4];
 }
 char* Interpreter::run(char* tape) {
 	char* tapePtr = tape;
