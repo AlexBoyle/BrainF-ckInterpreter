@@ -4,7 +4,7 @@
 
 #include "interpreter.h"
 
-void interpert();
+void runCommandLineTool();
 void runFile(char*);
 void stradd(char* tape, int* len, char chr) {
 	tape[*len] = chr;
