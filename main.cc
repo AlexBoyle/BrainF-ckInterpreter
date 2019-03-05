@@ -22,28 +22,42 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	else {
-		interpert();
+		runCommandLineTool();
 	}
 }
-void runFile(char* file) {
+
+/**
+* void runFile(char* path)
+*	Reads in a file at path to use as a brainf*ck tape
+*
+*	path: Path to file being interpreted
+*
+*	ToDo: dont open file twice
+*/
+void runFile(char* path) {
 	Interpreter* interpreter = new Interpreter();
 	char buff[2];
 	buff[1] = '\0';
 	FILE *fp;
-	fp = fopen(file, "r+");
+	fp = fopen(path, "r+");
 	fseek (fp, 0, SEEK_END);
 	int length = ftell (fp);
 	fclose(fp);
 	int len = 0;
 	char* tape = new char[length];
-	fp = fopen(file, "r+");
+	fp = fopen(path, "r+");
 	while(fgets(buff, 2, fp) != 0){// Print one char at a time
 		stradd(tape, &len, buff[0]);
 	}
 	fclose(fp);
 	interpreter->run(tape);
 }
-void interpert() {
+
+/**
+* void runCommandLineTool()
+*	runs tapes received from stdin as brainf*ck
+*/
+void runCommandLineTool() {
 	Interpreter* interpreter = new Interpreter();
 	char buf[2] = {'\0', '\0'};
 	char tape[1000] = {'\0'};
