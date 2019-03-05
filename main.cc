@@ -38,7 +38,7 @@ void runFile(char* file) {
 	int length = ftell (fp);
 	fclose(fp);
 	int len = 0;
-	char* tape = new char[length]{'\0'};
+	char* tape = new char[length];
 	fp = fopen(file, "r+");
 	while(fgets(buff, 2, fp) != 0){// Print one char at a time
 		stradd(tape, &len, buff[0]);
@@ -113,6 +113,7 @@ char* findEnd(char* tape) {
 		}
 		tapePtr ++;
 	}
+	return NULL;
 }
 char* block(char* tapePtr) {
 	tapePtr ++;
@@ -121,12 +122,8 @@ char* block(char* tapePtr) {
 	char* begin = tapePtr;
 	char* end = findEnd(begin);
 	while ((*ptr) != 0) {
-		end = run(tapePtr);
-		if(end != NULL) {
+		if(run(tapePtr) != NULL) {
 			tapePtr = begin;
-		}
-		else {
-			exit(127);
 		}
 	}
 	return end;
