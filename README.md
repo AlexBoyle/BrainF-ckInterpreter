@@ -8,8 +8,7 @@ My attempt at writing an interpreter for BrainF*ck
 ## Screenshots
 ![](https://raw.githubusercontent.com/AlexBoyle/BrainF-ckInterpreter/master/screenshots/beer.png)  
 ![](https://raw.githubusercontent.com/AlexBoyle/BrainF-ckInterpreter/master/screenshots/ex.png)
-## Current issues/ Comments
-- Does not support input char ','
-- bf files do not support comments
-- command line tape is only 1000 chars
-- memory is only 200 cells rn
+## Comments
+- Command line tape is 1024
+- Memory is 1000 unsigned chars
+- Pointer starts at the 5th cell
