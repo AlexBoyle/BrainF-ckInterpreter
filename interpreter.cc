@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-#include "Interpreter.h"
+#include "interpreter.h"
 
 Interpreter::Interpreter() {
 	this->ptr = &mem[4];
